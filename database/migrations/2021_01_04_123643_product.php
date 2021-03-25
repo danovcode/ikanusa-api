@@ -14,15 +14,21 @@ class Product extends Migration
     public function up()
     {
         Schema::create('product', function (Blueprint $table) {
-            $tabsle->id();
+            $table->id();
             $table->integer('harga');
             $table->string('nama');
             $table->integer('stok');
             $table->string('kondisi')->unique();
             $table->integer('minimal');
             $table->string('deskripsi');
+            $table->string('image');
             $table->integer('tokoId');
             $table->string('status');
+            $table->integer('user_id');
+            $table->boolean('accepted')->default(0);
+            $table->integer('nelayanId')->nullable();
+            $table->time('expired_on');
+            $table->string('is_active')->default('Y');
             $table->timestamps();
         });
     }
